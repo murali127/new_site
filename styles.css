@@ -2226,38 +2226,31 @@ background: linear-gradient(135deg, rgba(53, 53, 94, 0.7), rgba(42, 42, 62, 0.7)
     }
 }
 
-.visitor-counter {
+.visitor-count {
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem;
     background: rgba(15, 52, 96, 0.1);
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid rgba(15, 52, 96, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .counter-container {
     display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    background: rgba(26, 26, 46, 0.9);
-    border-radius: 20px;
-    border: 2px solid #0f3460;
-    box-shadow: 0 0 20px rgba(15, 52, 96, 0.3);
-}
-
-.counter-number {
     font-family: 'Orbitron', monospace;
-    font-size: 1.5rem;
     color: #2980b9;
-    text-shadow: 0 0 10px rgba(41, 128, 185, 0.5);
-    min-width: 60px;
 }
 
-.counter-update {
-    animation: counterPulse 1s ease;
-}
-
-@keyframes counterPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+/* Style the counter iframe if needed */
+.counter-container iframe {
+    border: none;
+    background: transparent;
 }
 

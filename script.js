@@ -771,40 +771,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Visitor Counter using CountAPI
-async function updateVisitorCount() {
-    const counterElement = document.getElementById('visitorCount');
-    counterElement.textContent = 'Loading...';
-    
-    try {
-        // First get the current count
-        const getResponse = await fetch('https://api.countapi.xyz/get/muralijay.netlify.app/visits');
-        if (!getResponse.ok) throw new Error('Failed to get count');
-        const currentCount = await getResponse.json();
-        
-        // Then increment it
-        const hitResponse = await fetch('https://api.countapi.xyz/hit/muralijay.netlify.app/visits');
-        if (!hitResponse.ok) throw new Error('Failed to increment count');
-        const newCount = await hitResponse.json();
-        
-        // Update display with animation
-        counterElement.classList.add('counter-update');
-        counterElement.textContent = newCount.value.toLocaleString();
-        
-        setTimeout(() => {
-            counterElement.classList.remove('counter-update');
-        }, 1000);
-
-    } catch (error) {
-        console.error('Error with visitor counter:', error);
-        counterElement.textContent = '--';
-    }
-}
-
 // Call when page loads
 document.addEventListener('DOMContentLoaded', () => {
     window.portfolioGame = new PortfolioGameEngine();
-    updateVisitorCount();
 });
 
 // Handle window resize
