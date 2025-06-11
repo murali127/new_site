@@ -1490,6 +1490,10 @@ body {
      background: linear-gradient(135deg, rgba(53, 53, 94, 0.7), rgba(42, 42, 62, 0.7)),
                 url('images/check.png') center/cover;
 }
+.project-image-counseling {
+     background: linear-gradient(135deg, rgba(53, 53, 94, 0.7), rgba(42, 42, 62, 0.7)),
+                url('images/cf.png') center/cover;
+}
 
 .project-image-chatbot {
  background: linear-gradient(135deg, rgba(53, 53, 94, 0.7), rgba(42, 42, 62, 0.7)),
