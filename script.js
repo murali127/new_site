@@ -771,9 +771,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Initialize the game engine when DOM is loaded
+// Visitor Counter using CountAPI
+const updateVisitorCount = async () => {
+    try {
+        const response = await fetch('https://api.countapi.xyz/hit/muralijay.netlify.app/visits');
+        const data = await response.json();
+        document.getElementById('visitor-count').textContent = data.value.toLocaleString();
+    } catch (error) {
+        console.error('Error updating visitor count:', error);
+    }
+};
+
+// Call when page loads
 document.addEventListener('DOMContentLoaded', () => {
     window.portfolioGame = new PortfolioGameEngine();
+    updateVisitorCount();
 });
 
 // Handle window resize
