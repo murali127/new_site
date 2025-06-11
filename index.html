@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murali Paila - Enhanced Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Add this in your <head> section -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("WgbAOVtu3iCT64oaD"); // Replace with your EmailJS user ID
+        })();
+    </script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Matrix Background -->
+    <canvas class="matrix-background" id="matrixCanvas"></canvas>
+    
+    <!-- Game UI -->
+    <div class="game-ui">
+        <div class="progress-bar-container">
+            <div class="progress-label">Portfolio Progress</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-text" id="progressText">0%</div>
+            </div>
+        </div>
+        
+        <div class="score-container">
+            <div class="score-label">XP</div>
+            <div class="score-value" id="scoreValue">0</div>
+        </div>
+        
+        <div class="achievements-container">
+            <div class="achievement-badge" id="explorerBadge">
+                <i class="fas fa-compass"></i>
+                <span>Explorer</span>
+            </div>
+            <div class="achievement-badge" id="interactorBadge">
+                <i class="fas fa-hand-pointer"></i>
+                <span>Interactor</span>
+            </div>
+            <div class="achievement-badge" id="masterBadge">
+                <i class="fas fa-crown"></i>
+                <span>Master</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Achievement Notification -->
+    <div class="achievement-notification" id="achievementNotification">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-text" id="achievementText">Achievement Unlocked!</div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text glitch-text" data-text="MP">MP</span>
+                <canvas class="logo-particles" width="100" height="50"></canvas>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link interactive-element"><span class="nav-glow"></span>Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link interactive-element"><span class="nav-glow"></span>About</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link interactive-element"><span class="nav-glow"></span>Skills</a></li>
+                <li class="nav-item"><a href="#experience" class="nav-link interactive-element"><span class="nav-glow"></span>Experience</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link interactive-element"><span class="nav-glow"></span>Projects</a></li>
+                <li class="nav-item"><a href="#certifications" class="nav-link interactive-element"><span class="nav-glow"></span>Certifications</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link interactive-element"><span class="nav-glow"></span>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <span class="hero-greeting neon-text">Hello, I'm</span>
+                    <span class="hero-name holographic-text typing-effect">Murali Paila</span>
+                </div>
+                <p class="hero-subtitle reveal-text">B.Tech IT Student & Full Stack Developer</p>
+                <div class="hero-location reveal-text">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Visakhapatnam, Andhra Pradesh, India</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="MURALI_PAILA.pdf" target="_blank" class="btn btn-primary interactive-btn">
+                        <i class="fas fa-download"></i>
+                        View Resume
+                        <div class="btn-particles"></div>
+                        <div class="success-animation"></div>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary interactive-btn">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                        <div class="btn-particles"></div>
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://github.com/muralipaila" class="social-link interactive-element" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <div class="social-ripple"></div>
+                    </a>
+                    <a href="https://linkedin.com/in/muralipaila" class="social-link interactive-element" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <div class="social-ripple"></div>
+                    </a>
+                    <a href="mailto:muralipaila@example.com" class="social-link interactive-element">
+                        <i class="fas fa-envelope"></i>
+                        <div class="social-ripple"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <canvas id="hero-canvas"></canvas>
+                <div class="floating-objects">
+                    <div class="floating-object">
+                        <div class="tech-cube interactive-element">
+                            <div class="cube-face front">JS</div>
+                            <div class="cube-face back">ES6</div>
+                            <div class="cube-face right">TS</div>
+                            <div class="cube-face left">Node</div>
+                            <div class="cube-face top">React</div>
+                            <div class="cube-face bottom">Vue</div>
+                        </div>
+                    </div>
+                    <div class="floating-object">
+                        <div class="tech-cube interactive-element">
+                            <div class="cube-face front">PY</div>
+                            <div class="cube-face back">ML</div>
+                            <div class="cube-face right">AI</div>
+                            <div class="cube-face left">DL</div>
+                            <div class="cube-face top">CV</div>
+                            <div class="cube-face bottom">NLP</div>
+                        </div>
+                    </div>
+                    <div class="floating-object">
+                        <div class="tech-cube interactive-element">
+                            <div class="cube-face front">DB</div>
+                            <div class="cube-face back">SQL</div>
+                            <div class="cube-face right">NoSQL</div>
+                            <div class="cube-face left">API</div>
+                            <div class="cube-face top">REST</div>
+                            <div class="cube-face bottom">GQL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator animated-pulse">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title holographic-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-image-container">
+                        <div class="holographic-frame">
+                            <img src="art.jpg" alt="Murali Paila" class="about-image">
+                            <div class="hologram-effect"></div>
+                            <div class="scan-line"></div>
+                        </div>
+                            <div class="name-plate">LIO</div>
+
+                    </div>
+                    <p class="about-intro">
+I'm a B.Tech Information Technology student at Gayatri Vidya Parishad College of Engineering with a 
+strong interest in full-stack development, AI/ML, and cybersecurity. Beyond coding, I enjoy video editing,
+ designing visuals, and exploring the creative side of tech. I'm passionate about combining technology and creativity 
+ to build meaningful and engaging experiences.           
+         </p>
+                    <br>
+                    <div class="about-details">
+                        <div class="detail-item interactive-card">
+                            <div class="card-glow"></div>
+                            <h3>Education</h3>
+                            <h4>B.Tech in Information Technology</h4>
+                            <p>Gayatri Vidya Parishad College of Engineering (A)</p>
+                            <p>CGPA: 8.44/10 | 2022 - Present</p>
+                        </div>
+                        <div class="detail-item interactive-card">
+                            <div class="card-glow"></div>
+                            <h3>Focus Areas</h3>
+                            <div class="focus-grid">
+                                <div class="focus-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>Full Stack Web Development</span>
+                                </div>
+                                <div class="focus-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>Machine Learning & AI</span>
+                                </div>
+                                <div class="focus-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Cybersecurity</span>
+                                </div>
+                                <div class="focus-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>Computer Vision</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item interactive-stat">
+                        <span class="stat-number">8.44</span>
+                        <span class="stat-label">CGPA</span>
+                        <div class="stat-particles"></div>
+                    </div>
+                    <div class="stat-item interactive-stat">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Projects</span>
+                        <div class="stat-particles"></div>
+                    </div>
+                    <div class="stat-item interactive-stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Certifications</span>
+                        <div class="stat-particles"></div>
+                    </div>
+                    <div class="stat-item interactive-stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Internships</span>
+                        <div class="stat-particles"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title holographic-title">Technical Skills</h2>
+            
+            <!-- Memory Card Game -->
+            <div class="mini-game-container">
+                <div class="memory-game">
+                    <h3>🧠 Tech Memory Challenge</h3>
+                    <div class="game-stats">
+                        <div>Moves: <span id="moveCount">0</span></div>
+                        <div>Matches: <span id="matchCount">0</span></div>
+                        <div>Time: <span id="gameTime">00:00</span></div>
+                    </div>
+                    <div class="memory-grid" id="memoryGrid">
+                        <!-- Cards will be generated by JavaScript -->
+                    </div>
+                    <button class="game-btn" id="startMemoryGame">Start Game</button>
+                </div>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                            <div class="skill-orb">90</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Advanced proficiency in modern JavaScript, ES6+, and TypeScript</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                            <div class="skill-orb">85</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Expert in Python for web development, AI/ML, and automation</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                            <div class="skill-orb">80</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Strong foundation in Java for enterprise applications and Android development</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                            <div class="skill-orb">75</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Proficient in C++ for competitive programming and system development</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">React.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                            <div class="skill-orb">88</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Advanced React development with hooks, context, and modern patterns</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82%"></div>
+                            </div>
+                            <div class="skill-orb">82</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Backend development with Express.js, APIs, and microservices</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">MongoDB</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="78%"></div>
+                            </div>
+                            <div class="skill-orb">78</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">NoSQL database design, aggregation pipelines, and optimization</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Git & GitHub</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                            <div class="skill-orb">85</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Version control, collaboration, and CI/CD workflows</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>AI/ML & Libraries</h3>
+                    <div class="skill-items">
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                            <div class="skill-orb">80</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Deep learning models, neural networks, and computer vision</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">OpenCV</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                            <div class="skill-orb">75</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Computer vision, image processing, and object detection</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Pandas & NumPy</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                            <div class="skill-orb">85</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Data manipulation, analysis, and scientific computing</div>
+                        </div>
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Streamlit</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82%"></div>
+                            </div>
+                            <div class="skill-orb">82</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">Rapid prototyping and deployment of ML applications</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Other Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item interactive-skill">
+                            <span class="skill-name">Video Editing</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                            <div class="skill-orb">95</div>
+                            <div class="skill-particles"></div>
+                            <div class="skill-description">I love video editing and have mastered many software tools like Adobe Premiere Pro, DaVinci Resolve, Kinemaster, CapCut, and more. I have edited a variety of videos for small YouTubers, helping them enhance their content with engaging and creative edits. Additionally, I work as a part-time freelancer for video editing, offering affordable and tailored solutions for clients.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="skills-visual">
+            <canvas id="skills-canvas"></canvas>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="futuristic-experience">
+        <div class="container">
+            <h2 class="section-title holographic-title">Experience</h2>
+            <div class="futuristic-timeline">
+                <div class="timeline-line">
+                    <div class="data-stream"></div>
+                </div>
+                
+                <div class="interactive-timeline-item">
+                    <div class="timeline-date">
+                        <div class="neon-badge">Apr 2025 - May 2025</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="holographic-card">
+                            <div class="company-logo floating-logo">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h3>Research Intern</h3>
+                            <h4>CSIR-CRRI, Delhi</h4>
+                            <p>Built a real-time Road Safety Scoring System using YOLOX, OpenCV, and Streamlit. Implemented ROI filtering to improve detection precision and safety analytics.</p>
+                            <div class="timeline-tags">
+                                <span class="neon-tag">Python</span>
+                                <span class="neon-tag">YOLOX</span>
+                                <span class="neon-tag">OpenCV</span>
+                                <span class="neon-tag">Streamlit</span>
+                            </div>
+                            <div class="hologram-overlay"></div>
+                            <div class="scan-lines"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactive-timeline-item">
+                    <div class="timeline-date">
+                        <div class="neon-badge">Jan 2025 - Apr 2025</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="holographic-card">
+                            <div class="company-logo floating-logo">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI/ML Intern</h3>
+                            <h4>Infosys Springboard, Remote</h4>
+                            <p>Engineered cheque automation pipeline with OCR and Python, reducing manual entry by 25%. Developed AI-powered form processing tool deployed via Streamlit.</p>
+                            <div class="timeline-tags">
+                                <span class="neon-tag">AI/ML</span>
+                                <span class="neon-tag">OCR</span>
+                                <span class="neon-tag">Python</span>
+                                <span class="neon-tag">Automation</span>
+                            </div>
+                            <div class="hologram-overlay"></div>
+                            <div class="scan-lines"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactive-timeline-item">
+                    <div class="timeline-date">
+                        <div class="neon-badge">Oct 2024 - Present</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="holographic-card">
+                            <div class="company-logo floating-logo">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h3>Technical Lead</h3>
+                            <h4>Open Forge, GVPCE</h4>
+                            <p>Led agile-based full-stack development, improving sprint efficiency by 20%. Directed code reviews and maintained CI/CD pipelines using GitHub Actions.</p>
+                            <div class="timeline-tags">
+                                <span class="neon-tag">Leadership</span>
+                                <span class="neon-tag">Full Stack</span>
+                                <span class="neon-tag">CI/CD</span>
+                                <span class="neon-tag">Agile</span>
+                            </div>
+                            <div class="hologram-overlay"></div>
+                            <div class="scan-lines"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactive-timeline-item">
+                    <div class="timeline-date">
+                        <div class="neon-badge">Nov 2024 - Present</div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="holographic-card">
+                            <div class="company-logo floating-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Cybersecurity Lead</h3>
+                            <h4>GDSC, GVPCE</h4>
+                            <p>Delivered interactive cybersecurity and blockchain sessions to 100+ students. Initiated capture-the-flag events to promote ethical hacking practices.</p>
+                            <div class="timeline-tags">
+                                <span class="neon-tag">Cybersecurity</span>
+                                <span class="neon-tag">Blockchain</span>
+                                <span class="neon-tag">Teaching</span>
+                                <span class="neon-tag">CTF</span>
+                            </div>
+                            <div class="hologram-overlay"></div>
+                            <div class="scan-lines"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title holographic-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card interactive-project-card">
+                    <div class="project-image project-image-roadsafety">
+                        <div class="project-overlay holographic-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/murali127/CSRI_CRRI_ROAD_SAFETY_SCORE" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                                <a href="https://github.com/murali127/CSRI_CRRI_ROAD_SAFETY_SCORE" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-particles"></div>
+                    </div>
+                    <div class="project-glow"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Road Safety Scoring System</h3>
+                        <p class="project-description">Real-time system analyzing dashcam footage using YOLOX and ByteTrack for safety scoring. Achieved 65-70% accuracy in traffic analysis.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">YOLOX</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">70%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Real-time</span>
+                                <span class="stat-label">Processing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card interactive-project-card">
+                    <div class="project-image project-image-rsvp">
+                        <div class="project-overlay holographic-overlay">
+                            <div class="project-links">
+                                <!-- MERN Stack Version -->
+                                <a href="https://github.com/murali127/event_rsvp" class="project-link" title="MERN Stack Version">
+                                    <i class="fab fa-github"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                                <!-- Java Servlets Version -->
+                                <a href="https://github.com/murali127/wedding-management-system" class="project-link" title="Java Servlets Version">
+                                    <i class="fab fa-java"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                                <!-- Live Demo Link -->
+                                <a href="https://wedding-management-system.herokuapp.com" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-particles"></div>
+                    </div>
+                    <div class="project-glow"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Event RSVP System</h3>
+                        <p class="project-description">Dual implementation of RSVP system: MERN stack with token auth and Java Servlets with SQL. Features user management, event tracking, and secure authentication.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MERN</span>
+                            <span class="tech-tag">Java Servlets</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Authentication</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">2 Versions</span>
+                                <span class="stat-label">Implementation</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Secure</span>
+                                <span class="stat-label">Auth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card interactive-project-card">
+                    <div class="project-image project-image-checkmate">
+                        <div class="project-overlay holographic-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/murali127/Check_Mate" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                                <a href="https://checkmate-python-app.streamlit.app/" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-particles"></div>
+                    </div>
+                    <div class="project-glow"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">CheckMate</h3>
+                        <p class="project-description">Cheque validation application using Python, Streamlit, and Gemini API. Detects, extracts, and stores data from PDFs with 80% accuracy.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">OCR</span>
+                            <span class="tech-tag">Gemini API</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">80%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">AI-Powered</span>
+                                <span class="stat-label">OCR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card interactive-project-card">
+                    <div class="project-image project-image-chatbot">
+                        <div class="project-overlay holographic-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/murali127/The_Vikings_Ai" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                                <a href="https://vikings.streamlit.app/" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-particles"></div>
+                    </div>
+                    <div class="project-glow"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Ask Me AI Chatbot</h3>
+                        <p class="project-description">Intelligent chatbot for PDF querying using Streamlit and Gemini API. Achieves 75% accuracy in document-based Q&A.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Gemini API</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">75%</span>
+                                <span class="stat-label">Q&A Accuracy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Smart</span>
+                                <span class="stat-label">NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card interactive-project-card">
+                    <div class="project-image project-image-attendance">
+                        <div class="project-overlay holographic-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/murali127/Attendace_application" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                                <a href="https://github.com/murali127/Attendace_application/blob/main/attendance.apk" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <div class="link-ripple"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-particles"></div>
+                    </div>
+                    <div class="project-glow"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Attendance App</h3>
+                        <p class="project-description">Android application for managing attendance using Java and XML for UI. Features include user authentication and attendance tracking.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">XML</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-value">Mobile</span>
+                                <span class="stat-label">Native</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Secure</span>
+                                <span class="stat-label">Tracking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title holographic-title">Certifications</h2>
+            <div class="certifications-grid">
+                <div class="cert-card interactive-cert-card">
+                    <div class="cert-image-container">
+                        <img src="images\deep.png" alt="Deep Learning Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-verification">
+                                <i class="fas fa-certificate"></i>
+                                <span>Verified</span>
+                            </div>
+                                        <!-- Added view file link -->
+            <a href="https://drive.google.com/file/d/1DL0h4Yw25rK6fUa9HsuxwGkDOxedA28F/view?usp=sharing" target="_blank" class="cert-view-link">
+                <i class="fas fa-file-alt"></i>
+                <span>View Certificate</span>
+            </a>
+                        </div>
+                        <div class="cert-particles"></div>
+                    </div>
+                    <div class="cert-glow"></div>
+                    <div class="cert-content">
+                        <div class="cert-badge">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="cert-title">Deep Learning for Smart Cities</h3>
+                        <h4 class="cert-issuer">NIT Rourkela</h4>
+                        <p class="cert-date">Sep 2023</p>
+                    </div>
+                </div>
+                
+              
+                
+                <div class="cert-card interactive-cert-card">
+                    <div class="cert-image-container">
+                        <img src="images/cyber.png" alt="Cybersecurity Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-verification">
+                                <i class="fas fa-certificate"></i>
+                                <span>Verified</span>
+                            </div>
+                             <a href="https://coursera.org/share/e7b759e28c4cb873f06fb440365526f2" target="_blank" class="cert-view-link">
+                <i class="fas fa-file-alt"></i>
+                <span>View Certificate</span>
+            </a>
+                        </div>
+                        <div class="cert-particles"></div>
+                    </div>
+                    <div class="cert-glow"></div>
+                    <div class="cert-content">
+                        <div class="cert-badge">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="cert-title">Foundations of Cybersecurity</h3>
+                        <h4 class="cert-issuer">Coursera</h4>
+                        <p class="cert-date">2024</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card interactive-cert-card">
+                    <div class="cert-image-container">
+                        <img src="images/germalin.png" alt="Chaos Engineering Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-verification">
+                                <i class="fas fa-certificate"></i>
+                                <span>Verified</span>
+                            </div>
+                            <a href="https://certification.gremlin.com/credentials/9adca823-ef01-4026-be5b-417a9000a239" target="_blank" class="cert-view-link">
+                <i class="fas fa-file-alt"></i>
+                <span>View Certificate</span>
+            </a>
+                        </div>
+
+                        <div class="cert-particles"></div>
+                    </div>
+                    <div class="cert-glow"></div>
+                    <div class="cert-content">
+                        <div class="cert-badge">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="cert-title">Enterprise Chaos Engineering</h3>
+                        <h4 class="cert-issuer">Gremlin</h4>
+                        <p class="cert-date">Oct 2024</p>
+                    </div>
+                </div>
+                
+<div class="cert-card interactive-cert-card">
+    <div class="cert-image-container">
+        <img src="images/cisco.png" alt="Cisco Certifications" class="cert-image">
+        <div class="cert-overlay">
+            <div class="cert-verification">
+                <i class="fas fa-certificate"></i>
+                <span>Verified</span>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1DZWBwzpJcz1xvdZZMiwtZwZuLOC-oA6a?usp=drive_link" target="_blank" class="cert-view-link">
+                <i class="fas fa-folder-open"></i>
+                <span>View Certificates</span>
+            </a>
+        </div>
+        <div class="cert-particles"></div>
+    </div>
+    <div class="cert-glow"></div>
+    <div class="cert-content">
+        <div class="cert-badge">
+            <i class="fas fa-network-wired"></i>
+        </div>
+        <h3 class="cert-title">Cisco Certifications</h3>
+        <h4 class="cert-issuer">Cisco</h4>
+        <div class="cert-tags">
+            <span class="tech-tag">CCNA</span>
+            <span class="tech-tag">Python Essentials</span>
+            <span class="tech-tag">Cybersecurity</span>
+        </div>
+        <p class="cert-date">2025</p>
+    </div>
+</div>
+                
+                <div class="cert-card interactive-cert-card">
+                    <div class="cert-image-container">
+                        <img src="images/block.png" alt="Blockchain Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-verification">
+                                <i class="fas fa-certificate"></i>
+                                <span>Verified</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1nr463rXJRfJFzkXIuT99P0yFQCFmipAj/view?usp=drive_link" target="_blank" class="cert-view-link">
+                <i class="fas fa-file-alt"></i>
+                <span>View Certificate</span>
+            </a>
+                        </div>
+                        <div class="cert-particles"></div>
+                    </div>
+                    <div class="cert-glow"></div>
+                    <div class="cert-content">
+                        <div class="cert-badge">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3 class="cert-title">Blockchain Technology</h3>
+                        <h4 class="cert-issuer">NPTEL</h4>
+                        <p class="cert-date">2025</p>
+                    </div>
+                </div>
+                
+                <div class="cert-card interactive-cert-card">
+                    <div class="cert-image-container">
+                        <img src="images/post.png" alt="API Certificate" class="cert-image">
+                        <div class="cert-overlay">
+                            <div class="cert-verification">
+                                <i class="fas fa-certificate"></i>
+                                <span>Verified</span>
+                            </div>
+                            <a href="https://badgr.com/public/assertions/IMy6cXoYSr-NFPtTtnf4IQ?identity__email=muralijay360@gmail.com" target="_blank" class="cert-view-link">
+                <i class="fas fa-file-alt"></i>
+                <span>View Certificate</span>
+            </a>
+                        </div>
+                        <div class="cert-particles"></div>
+                    </div>
+                    <div class="cert-glow"></div>
+                    <div class="cert-content">
+                        <div class="cert-badge">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="cert-title">API Fundamentals</h3>
+                        <h4 class="cert-issuer">Postman</h4>
+                        <p class="cert-date">2024</p>
+                    </div>
+                </div>
+                <div class="cert-card interactive-cert-card">
+    <div class="cert-image-container">
+        <img src="images/info.png" alt="Infosys Java Certifications" class="cert-image">
+        <div class="cert-overlay">
+            <div class="cert-verification">
+                <i class="fas fa-certificate"></i>
+                <span>Verified</span>
+            </div>
+            <a href="https://drive.google.com/drive/folders/1jHXvwhQkpZjk4BNyoUWuyKw00Lri0KtS?usp=drive_link" target="_blank" class="cert-view-link">
+                <i class="fas fa-folder-open"></i>
+                <span>View Certificates</span>
+            </a>
+        </div>
+        <div class="cert-particles"></div>
+    </div>
+    <div class="cert-glow"></div>
+    <div class="cert-content">
+        <div class="cert-badge">
+            <i class="fab fa-java"></i>
+        </div>
+        <h3 class="cert-title">Java Stack Certifications</h3>
+        <h4 class="cert-issuer">Infosys Springboard</h4>
+        <div class="cert-tags">
+            <span class="tech-tag">Core Java</span>
+            <span class="tech-tag">Spring Boot</span>
+            <span class="tech-tag">Microservices</span>
+        </div>
+        <p class="cert-date">2024</p>
+    </div>
+</div>
+<div class="cert-card interactive-cert-card">
+    <div class="cert-image-container">
+        <img src="images/gssoc.png" alt="GSSOC Certificate" class="cert-image">
+        <div class="cert-overlay">
+            <div class="cert-verification">
+                <i class="fas fa-certificate"></i>
+                <span>Verified</span>
+            </div>
+            <a href="https://drive.google.com/file/d/1IEGrQ6vCoTptjGMmEJmhqHZ0Bd9y04il/view?usp=drive_link" target="_blank" class="cert-view-link">
+                <i class="fas fa-file-alt"></i>
+                <span>View Certificate</span>
+            </a>
+        </div>
+        <div class="cert-particles"></div>
+    </div>
+    <div class="cert-glow"></div>
+    <div class="cert-content">
+        <div class="cert-badge">
+            <i class="fas fa-code-branch"></i>
+        </div>
+        <h3 class="cert-title">GSSOC Open Source Contribution</h3>
+        <h4 class="cert-issuer">GirlScript.Tech</h4>
+        <div class="cert-tags">
+            <span class="tech-tag">Open Source</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">Collaboration</span>
+        </div>
+        <p class="cert-date">August 2024</p>
+    </div>
+</div>
+            </div>
+
+        </div>
+        
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title holographic-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item interactive-element">
+                            <div class="contact-ripple"></div>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>muralijay360@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item interactive-element">
+                            <div class="contact-ripple"></div>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 8008242013</p>
+                            </div>
+                        </div>
+                        <div class="contact-item interactive-element">
+                            <div class="contact-ripple"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Visakhapatnam, Andhra Pradesh</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <a href="https://github.com/muralipaila" class="social-link interactive-element" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <div class="social-ripple"></div>
+                        </a>
+                        <a href="https://linkedin.com/in/muralipaila" class="social-link interactive-element" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <div class="social-ripple"></div>
+                        </a>
+                        <a href="https://twitter.com/muralipaila" class="social-link interactive-element" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <div class="social-ripple"></div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="holographic-form">
+                    <form id="contactForm">
+    <div class="form-group">
+        <input type="text" id="name" class="futuristic-input" placeholder="Your Name" required>
+        <div class="input-glow"></div>
+    </div>
+    <div class="form-group">
+        <input type="email" id="email" class="futuristic-input" placeholder="Your Email" required>
+        <div class="input-glow"></div>
+    </div>
+    <div class="form-group">
+        <input type="text" id="subject" class="futuristic-input" placeholder="Subject" required>
+        <div class="input-glow"></div>
+    </div>
+    <div class="form-group">
+        <textarea id="message" class="futuristic-input" rows="5" placeholder="Your Message" required></textarea>
+        <div class="input-glow"></div>
+    </div>
+    <button type="submit" class="btn btn-primary interactive-btn">
+        <i class="fas fa-paper-plane"></i>
+        Send Message
+        <div class="btn-particles"></div>
+        <div class="success-animation"></div>
+    </button>
+</form>
+                </div>
+            </div>
+        </div>
+        <div class="contact-visual">
+            <canvas id="contact-canvas"></canvas>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Murali Paila. All rights reserved.</p>
+                <p>😉</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
