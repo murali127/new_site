@@ -772,15 +772,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Visitor Counter using CountAPI
-const updateVisitorCount = async () => {
+async function updateVisitorCount() {
+    const counterElement = document.getElementById('visitorCount');
+    
     try {
-        const response = await fetch('https://api.countapi.xyz/hit/muralijay.netlify.app/visits');
-        const data = await response.json();
-        document.getElementById('visitor-count').textContent = data.value.toLocaleString();
+        // Try local storage first
+        let count = parseInt(localStorage.getItem('visitorCount')) || 0;
+        
+        try {
+            const response = await fetch('https://api.countapi.xyz/hit/muralijay.netlify.app/visits');
+            if (!response.ok) throw new Error('API request failed');
+            const data = await response.json();
+            count = data.value;
+            localStorage.setItem('visitorCount', count);
+        } catch (error) {
+            console.warn('Could not fetch from API, using local count');
+            // Increment local count if API fails
+            count++;
+            localStorage.setItem('visitorCount', count);
+        }
+
+        // Update the display with animation
+        counterElement.classList.add('counter-update');
+        counterElement.textContent = count.toLocaleString();
+        
+        setTimeout(() => {
+            counterElement.classList.remove('counter-update');
+        }, 1000);
+
     } catch (error) {
         console.error('Error updating visitor count:', error);
+        counterElement.textContent = 'Visitor count unavailable';
     }
-};
+}
 
 // Call when page loads
 document.addEventListener('DOMContentLoaded', () => {
