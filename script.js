@@ -444,18 +444,12 @@ class PortfolioGameEngine {
 
             try {
                 // Using EmailJS service
-                await emailjs.send(
-                    'lio_040', // Replace with your EmailJS service ID
-                    'template_vj3jt6v', // Replace with your EmailJS template ID
-                    {
-                        from_name: formData.name,
-                        from_email: formData.email,
-                        subject: formData.subject,
-                        message: formData.message,
-                        to_email: 'muralijay360@gmail.com' // Your email address
-                    },
-                    'WgbAOVtu3iCT64oaD' // Replace with your EmailJS user ID
-                );
+            await emailjs.send('lio_040', 'template_vj3jt6v', {
+    name: formData.name,
+    email: formData.email,
+    message: formData.message,
+    time: new Date().toLocaleString()
+}, 'WgbAOVtu3iCT64oaD');
 
                 // Show success message
                 submitButton.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
